@@ -100,7 +100,7 @@
                     $ownedPlane = $res->fetch_object();
                     ?>
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="3">CURRENT CLEARANCE: <b><?php echo $ownedPlane->clearance; ?></b></td>
                     </tr>
                     <tr>
                         <td align="center"> Callsign: <b><?PHP echo $ownedPlane->callsign; ?></b></td>

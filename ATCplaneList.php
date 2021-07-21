@@ -54,8 +54,8 @@
                             <input style="width:32%; padding-right:0px; padding-left:0px; display:inline-block" type="text" name="plane" required>
                         </div>
                         <div style="margin-top:2px">
-                            <label style="width:15%; padding-right:0px; padding-left:0px;  display:inline-block" for="notes">Notes:</label>
-                            <input style="width:30%; padding-right:0px; padding-left:0px;  display:inline-block" type="text" name="notes">
+                            <label style="width:15%; padding-right:0px; padding-left:0px;  display:inline-block" for="clearance">Clearance:</label>
+                            <input style="width:30%; padding-right:0px; padding-left:0px;  display:inline-block" type="text" name="clearance">
                             
                             <label style="width:20%; padding-right:0px; padding-left:0px;  display:inline-block" for="destiantion">Destination*:</label>
                             <select style="width:32%; padding-right:0px; padding-left:0px; display:inline-block" name="destination" required>
@@ -102,16 +102,16 @@
                                     if ($row->emergency_status)
                                         echo(' style="color:red;"');
                                     echo ('>'. $row->callsign .'</td>'.'
-                                    <td with="35%" rowspan="2">
-                                        <form method="post" action="updateNotes.php" align="center">
-                                            <input type="text" name="notes-'.$row->callsign.'" value="'.$row->notes.'" placeholder="notes">
-                                            <input type="submit" value="update">
+                                    <td width="33%" rowspan="2" align="center">
+                                        <form method="post" action="updateClearance.php" align="center">
+                                            <input type="text" name="clearance-'.$row->callsign.'" value="'.$row->clearance.'" placeholder="clearance" style="width:95%; display: inline-block;">
+                                            <input type="submit" value="update" style="width:100%">
                                         </form>
                                     </td>
                                     <td width="25%">
                                         DEPT: '.$row->origin.'
                                     </td>
-                                    <td width="20%" rowspan="2">
+                                    <td width="18%" rowspan="2">
                                         <form method="post" align="center" action="transferPlane.php">
                                             <select name="transfer-'.$row->callsign.'">
                                             <option value="--transfer to--">--transfer to--</option>');
@@ -132,7 +132,7 @@
                                             <input type="submit" value="transfer">
                                         </form>
                                     </td>
-                                    <td rowspan="2" width="10%" align="center">
+                                    <td rowspan="2" width="7%" align="center">
                                     <form method="post" action="deletePlane.php">
                                         <input type="hidden" value="true" name="delete-'.$row->callsign.'">
                                         <input type="submit" style="color:red;" value="delete">
@@ -140,7 +140,7 @@
                                     </td>
                                 </tr>
                             <td>
-                                aircraft:'.$row->aircraft.'
+                                '.$row->aircraft.'
                             </td>
                             <td>
                                 ARRV:'.$row->destination.'

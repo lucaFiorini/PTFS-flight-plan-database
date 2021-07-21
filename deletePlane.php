@@ -4,7 +4,9 @@
     $result = $conn->query("SELECT callsign FROM planes");
     while ($callsign = $result->fetch_array()){
         if(isset($_REQUEST["delete-".$callsign[0]])){
-            $conn->query('DELETE FROM planes WHERE callsign="'.$callsign[0].'";');
+            $stmt = $conn->prepare('DELETE FROM planes WHERE callsign= ? ;');
+            $stmt->bind_param("s",$callsign[0]);
+            $stmt->execute();
             break;
         }
     }
