@@ -13,7 +13,7 @@
     while($airport = $res->fetch_array()){
         array_push($airportList, $airport[0]);
     }
-
+    
     $hashedIP = hash("sha256",$_SERVER['REMOTE_ADDR']);
 
     $conn->query('DELETE FROM planes WHERE created_by = "'.$hashedIP.'"');
