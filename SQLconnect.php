@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "PTFS data";
+$username = "XD";
+$password = "XD";
+$dbname = "yeet";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
