@@ -119,12 +119,11 @@
                     </tr>
                     <tr>
                         <td rowspan="2" align="center" width="25%">Current control zone:<br><?php echo $ownedPlane->current_control_zone ?></td>
-                        <td width="25%">DEPT: <?php echo $ownedPlane->origin ?></td>
-                        <td rowspan="2" width="25%" align="center">
-                        <form action="NonATCtransferPlane.php" method="post">
-                            <div>
-                                <select style="width:100%; padding-right:0px; padding-left:0px; display:inline-block" name="nonATCplaneTransfer" required>
-                                    <option width="100%" value="--transfer to--">-----------------transfer to-----------------</option>
+                        <td width="20%">DEPT: <?php echo $ownedPlane->origin ?></td>
+                        <td width="30%" align="center">
+                            <form action="NonATCtransferPlane.php" method="post">
+                                <select style="width:70%; padding-right:0px; padding-left:0px; display:inline-block" name="nonATCplaneTransfer" required>
+                                    <option width="100%" value="--transfer to--">---------transfer to---------</option>
                                     <?php
                                     require("SQLconnect.php");
                                     $SQL='SELECT airport FROM airports;';
@@ -138,13 +137,18 @@
                                     }
                                     ?>
                                 </select>
-                                </div>
-                                <input type="submit" value="transfer">
-                            </td>
-                        </form>
+                                <input type="submit" value="transfer" style="width:25%; padding-right:0px; padding-left:0px; display:inline-block" >
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="1">ARRV: <?php echo $ownedPlane->destination ?></td>
+                        <td align="center">
+                            <form action="nonATCupdateRequest.php" method="post">
+                                <input type="text" name="request" style="width:70%; padding-right:0px; padding-left:0px; display:inline-block" placeholder="request" value="<?php echo $ownedPlane->request?>">
+                                <input type="submit" value="update" style="width:25%; padding-right:0px; padding-left:0px; display:inline-block">
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="4" align="center">

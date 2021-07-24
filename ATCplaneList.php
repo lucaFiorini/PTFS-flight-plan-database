@@ -39,12 +39,12 @@
     <center>
         <table border=1 width="700px">
             <tr>
-                <td align="center" colspan="5">
+                <td align="center" colspan="4">
                     <input type="checkbox" onclick="toggleAutoRefresh(this);" id="reloadCB"> Auto Refresh (NOTE: input fields may act up when auto-reload is active)
                 </td>
             </tr>
             <tr>
-                <td  colspan="5">
+                <td  colspan="4">
                     <form action="newPlane.php" method="post" id="newPlaneForm">
                         <div style="margin-top:2px">
                             <label style="width:15%; padding-right:0px; padding-left:0px; display:inline-block" for="callsign">Callsign*:</label>
@@ -98,19 +98,14 @@
                         echo('
                         <tr>
                             <tr>
-                                <td width="20%"');
+                                <td width="20%" rowspan="2"');
                                     if ($row->emergency_status)
                                         echo(' style="color:red;"');
-                                    echo ('>'. $row->callsign .'</td>'.'
+                                    echo ('> callsign: <b>'. $row->callsign .'</b></td>'.'
                                     <td width="33%" rowspan="2" align="center">
-                                        <form method="post" action="updateClearance.php" align="center">
-                                            <input type="text" name="clearance-'.$row->callsign.'" value="'.$row->clearance.'" placeholder="clearance" style="width:95%; display: inline-block;">
-                                            <input type="submit" value="update" style="width:100%">
-                                        </form>
+                                        request: <b>'.$row->request.'<b>
                                     </td>
-                                    <td width="25%">
-                                        DEPT: '.$row->origin.'
-                                    </td>
+
                                     <td width="18%" rowspan="2">
                                         <form method="post" align="center" action="transferPlane.php">
                                             <select name="transfer-'.$row->callsign.'">
@@ -132,16 +127,31 @@
                                             <input type="submit" value="transfer">
                                         </form>
                                     </td>
-                                    <td rowspan="2" width="7%" align="center">
+                                    <td rowspan="4" width="7%" align="center">
                                     <form method="post" action="deletePlane.php">
                                         <input type="hidden" value="true" name="delete-'.$row->callsign.'">
                                         <input type="submit" style="color:red;" value="delete">
                                     </form>
                                     </td>
                                 </tr>
-                            <td>
-                                '.$row->aircraft.'
+                                <tr>
+
+                        </tr>
+                        <tr>
+                            <td rowspan="2">
+                                aircraft: <b>'.$row->aircraft.'</b>
                             </td>
+                            <td rowspan="2">
+                                <form method="post" action="updateClearance.php" align="center">
+                                    <input type="text" name="clearance-'.$row->callsign.'" value="'.$row->clearance.'" placeholder="clearance" style="width:95%; display: inline-block;">
+                                    <input type="submit" value="update clearace" style="width:100%">
+                                </form>
+                            </td>
+                            <td>
+                                DEPT: '.$row->origin.'
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 ARRV:'.$row->destination.'
                             </td>

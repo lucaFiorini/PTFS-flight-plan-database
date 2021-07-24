@@ -16,7 +16,7 @@
         if(isset($_REQUEST["transfer-".$callsign[0]])){
             if(in_array($_REQUEST['transfer-'.$callsign[0]],$airportList)){
                 refreshInactivityTimer($callsign[0]);
-                $stmt = $conn->prepare('UPDATE planes SET current_control_zone = ? WHERE callsign = ?' );
+                $stmt = $conn->prepare('UPDATE planes SET current_control_zone = ? ,clearance = "", request = "" WHERE callsign = ?' );
                 $stmt -> bind_param("ss",$_REQUEST['transfer-'.$callsign[0]],$callsign[0]);
                 $stmt ->execute();
                 break;

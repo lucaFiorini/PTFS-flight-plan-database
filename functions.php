@@ -19,7 +19,6 @@ function refreshInactivityTimer($callsign){
     $stmt = $conn->prepare("UPDATE planes SET last_time_edited = UNIX_TIMESTAMP() WHERE callsign = ?");
     $stmt->bind_param("s",$callsign);
     $stmt->execute();
-    print(mysqli_error($conn));
 
 }
 ?>

@@ -15,7 +15,7 @@ if($callsign = $result->fetch_array()){
 
     if(in_array($_REQUEST['nonATCplaneTransfer'],$airportList)){
         refreshInactivityTimer($callsign[0]);
-        $stmt = $conn->prepare('UPDATE planes SET current_control_zone = ? WHERE callsign = ?' );
+        $stmt = $conn->prepare('UPDATE planes SET current_control_zone = ? , clearance = "", request = "" WHERE callsign = ?' );
         $stmt -> bind_param("ss",$_REQUEST['nonATCplaneTransfer'],$callsign[0]);
         $stmt ->execute();
     }
