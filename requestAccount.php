@@ -6,7 +6,7 @@ if(isset($_REQUEST['username']) and isset($_REQUEST['password'])){
     $stmt = $conn->prepare('INSERT INTO pending_atc_login_data (username,hashed_password) VALUES (?, ?)');
     $stmt->bind_param('ss',$_REQUEST['username'],$hashed_password);
     $stmt->execute();
-    echo '<script>alert("Accounht information submitted successfully, you will be contacted on discord when your account will be activated (within 24 hours)")</script>';
+    echo '<script>alert("Accounht information submitted successfully, you will be contacted on discord upon account activation (within 24 hours)")</script>';
 }
 ?>
 <!DOCTYPE html>

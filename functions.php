@@ -21,4 +21,29 @@ function refreshInactivityTimer($callsign){
     $stmt->execute();
 
 }
+
+function generateOptionList($tbname,$tbcol,$conditionColumn = false ,$condition = false){
+
+    require("SQLconnect.php");
+
+    $SQLstring = 'SELECT '.$tbcol.' FROM '.$tbname;
+    if ($conditionColumn and $condition)
+        $SQLstring.=' WHERE '.$conditionColumn.' <> ?';
+    
+    $stmt = $conn->prepare($SQLstring);
+    
+    if ($conditionColumn and $condition)
+        $stmt->bind_param("s",$condition);
+
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $airportList = Array();
+    while($airport = $res->fetch_array()){
+        array_push($airportList, $airport[0]);
+    }
+    foreach($airportList as $airport){
+        echo ('<option value="'.$airport.'">'.$airport.'</option>');
+    }
+    $conn->close();
+}
 ?>

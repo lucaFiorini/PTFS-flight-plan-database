@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body style="text-align: center;" >
-    <div>
+<body>
+    <div style="text-align:right">
+    <a align="right" href="requestAccount.php" type="button">Don't have an account yet? submit the information to create one here!</a>
+    </div>
+    <div style="text-align: center;">
         <form method="post" action="performLogin.php">
             <label for="username">Username:</label>
             <input type="text" name="username" required>
